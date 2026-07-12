@@ -169,7 +169,7 @@ export const sendSessionConfirmationEmail = async (
   data: SessionSchemaType,
 ) => {
   await sendEmail({
-    to: data.email,
+    to: recipient === "customer" ? data.email : envServer.ADMIN_EMAIL,
     subject:
       recipient === "customer" ? "Session confirmation" : "New session booking",
     html: createSessionEmail(recipient, "html", data),
