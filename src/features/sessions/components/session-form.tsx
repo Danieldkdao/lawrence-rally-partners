@@ -29,8 +29,12 @@ import { Button } from "@/components/ui/button";
 import { LoadingSwap } from "@/components/ui/loading-swap";
 import { createSessionAction } from "../actions/actions";
 import { toast } from "sonner";
+import { useState } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { CheckCircle2Icon } from "lucide-react";
 
 export const SessionForm = () => {
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const form = useForm<SessionSchemaType>({
     resolver: zodResolver(sessionSchema),
     defaultValues: {
@@ -53,6 +57,7 @@ export const SessionForm = () => {
     } else {
       toast.success(response.message);
       form.reset();
+      setHasSubmitted(true);
     }
   };
 
@@ -289,6 +294,17 @@ export const SessionForm = () => {
           </Field>
         )}
       />
+      {hasSubmitted && (
+        <Alert>
+          <CheckCircle2Icon className="text-emerald-500!" />
+          <AlertTitle>Submission successful!</AlertTitle>
+          <AlertDescription>
+            The session was submitted successfully! Our team will get back to
+            you soon with the details. In the meantime, we have sent you a email
+            to confirm the details of the session.
+          </AlertDescription>
+        </Alert>
+      )}
       <Button disabled={form.formState.isSubmitting} type="submit">
         <LoadingSwap isLoading={form.formState.isSubmitting}>
           Submit

@@ -1,8 +1,9 @@
 "use server";
 
 import { db } from "@/db/db";
-import { sessionSchema, SessionSchemaType } from "./schemas";
 import { SessionTable } from "@/db/schema";
+import { sendSessionConfirmationEmail } from "@/services/mailjet/emails/send-session-confirmation-email";
+import { sessionSchema, SessionSchemaType } from "./schemas";
 
 export const createSessionAction = async (unsafeData: SessionSchemaType) => {
   const { data, success } = sessionSchema.safeParse(unsafeData);
@@ -19,6 +20,11 @@ export const createSessionAction = async (unsafeData: SessionSchemaType) => {
       .values(data)
       .returning();
     if (!insertedSession) throw new Error("Failed to create session.");
+
+    await Promise.all([
+      sendSessionConfirmationEmail("customer", data),
+      sendSessionConfirmationEmail("internal", data),
+    ]);
 
     return {
       error: false,
