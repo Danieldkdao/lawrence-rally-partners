@@ -4,6 +4,12 @@ import { db } from "@/db/db";
 import { SessionTable } from "@/db/schema";
 import { sendSessionConfirmationEmail } from "@/services/mailjet/emails/send-session-confirmation-email";
 import { sessionSchema, SessionSchemaType } from "./schemas";
+import { cacheTag } from "next/cache";
+import {
+  getSessionsGlobalTag,
+  revalidateSessionsCache,
+} from "../server/cache/sessions";
+import { desc } from "drizzle-orm";
 
 export const createSessionAction = async (unsafeData: SessionSchemaType) => {
   const { data, success } = sessionSchema.safeParse(unsafeData);
@@ -21,6 +27,8 @@ export const createSessionAction = async (unsafeData: SessionSchemaType) => {
       .returning();
     if (!insertedSession) throw new Error("Failed to create session.");
 
+    revalidateSessionsCache();
+
     await Promise.all([
       sendSessionConfirmationEmail("customer", data),
       sendSessionConfirmationEmail("internal", data),
@@ -37,4 +45,14 @@ export const createSessionAction = async (unsafeData: SessionSchemaType) => {
       message: "Failed to create session. Please try again.",
     };
   }
+};
+
+export const getSessions = async () => {
+  "use cache";
+  cacheTag(getSessionsGlobalTag());
+
+  return db
+    .select()
+    .from(SessionTable)
+    .orderBy(desc(SessionTable.createdAt), desc(SessionTable.id));
 };

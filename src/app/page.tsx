@@ -1,8 +1,19 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SessionForm } from "@/features/sessions/components/session-form";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import {
+  Target,
+  Swords,
+  Dumbbell,
+  Users,
+  type LucideIcon,
+  MailIcon,
+  PhoneIcon,
+} from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { SessionsList } from "@/features/sessions/components/sessions-list";
 
 const links = [
   {
@@ -17,18 +28,11 @@ const links = [
     label: "Contact us",
     href: "#contact-us",
   },
+  {
+    label: "Sessions",
+    href: "#sessions",
+  },
 ];
-
-import {
-  Target,
-  Swords,
-  Dumbbell,
-  Users,
-  type LucideIcon,
-  MailIcon,
-  PhoneIcon,
-} from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 
 const services: {
   title: string;
@@ -237,6 +241,22 @@ export default function Home() {
               <SessionForm />
             </CardContent>
           </Card>
+        </section>
+        <section
+          id="sessions"
+          className="flex flex-col items-center w-full gap-16"
+        >
+          <div className="flex flex-col gap-4 items-center w-full">
+            <h2 className="text-3xl md:text-5xl font-semibold text-center">
+              All sessions
+            </h2>
+            <p className="text-2xl text-muted-foreground max-w-250 text-center">
+              A list of all booked sessions so far. Note that this will be moved
+              to a private admin-only dashboard in the future.
+            </p>
+          </div>
+
+          <SessionsList />
         </section>
       </main>
       <footer className="mt-32 border-t px-6 py-4 flex items-center justify-center">

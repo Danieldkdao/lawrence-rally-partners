@@ -61,6 +61,7 @@ export const SessionForm = () => {
       form.reset();
       setHasSubmitted(true);
       router.refresh();
+      router.push("#sessions");
     }
   };
 
