@@ -36,7 +36,7 @@ export default function RootLayout({
         frauncesHeading.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col dark">
         {children}
         <Toaster />
       </body>

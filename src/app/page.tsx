@@ -137,7 +137,7 @@ const reachOutOptions = [
 export default function Home() {
   return (
     <div>
-      <header className="px-6 py-4 border-b w-full flex items-center gap-6">
+      <header className="px-6 py-4 border-b w-full flex items-center gap-6 justify-between">
         <Link href="/">
           <span className="text-2xl font-semibold">
             Lawrence Rally Partners
@@ -357,10 +357,7 @@ export default function Home() {
           <SessionsList />
         </section>
       </main>
-      <footer className="mt-32 border-t px-6 py-4 flex items-center gap-4">
-        <span className="text-muted-foreground text-xl font-medium text-center">
-          Lawrence Rally Partners
-        </span>
+      <footer className="mt-32 border-t px-6 py-4 flex items-center gap-4 justify-between">
         <Link
           href="https://www.instagram.com/lawrencerallypartners"
           target="_blank"
@@ -371,6 +368,9 @@ export default function Home() {
         >
           <FaInstagram className="size-10 text-foreground/60" />
         </Link>
+        <span className="text-base font-medium text-muted-foreground">
+          ©2026 Lawrence Rally Partners. All Rights Reserved.
+        </span>
       </footer>
     </div>
   );
