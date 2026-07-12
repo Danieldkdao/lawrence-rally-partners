@@ -9,7 +9,6 @@ export const envServer = createEnv({
     MAILJET_API_SECRET: z.string().min(1),
     SENDER_EMAIL: z.string().min(1),
     ADMIN_EMAIL: z.string().min(1),
-    ADMIN_DASHBOARD_PASSWORD: z.string().min(1),
   },
   emptyStringAsUndefined: true,
   experimental__runtimeEnv: true,
