@@ -1,19 +1,27 @@
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { SessionForm } from "@/features/sessions/components/session-form";
+import { SessionsList } from "@/features/sessions/components/sessions-list";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import {
-  Target,
-  Swords,
+  AwardIcon,
   Dumbbell,
+  FlowerIcon,
+  ListChecksIcon,
+  MailIcon,
+  NewspaperIcon,
+  PhoneIcon,
+  StarIcon,
+  Swords,
+  Target,
+  TrophyIcon,
   Users,
   type LucideIcon,
-  MailIcon,
-  PhoneIcon,
 } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { SessionsList } from "@/features/sessions/components/sessions-list";
+import Image from "next/image";
+import Link from "next/link";
+import { FaInstagram } from "react-icons/fa6";
 
 const links = [
   {
@@ -31,6 +39,53 @@ const links = [
   {
     label: "Sessions",
     href: "#sessions",
+  },
+];
+
+const articles = [
+  {
+    title: "Lawrence boys tennis hosts Free State, others in home quad",
+    description:
+      "A 2026 Lawrence Journal-World meet recap noting that Free State's Lawrence Dao defeated Oliver Hester 8-0 in singles.",
+    href: "https://www2.ljworld.com/sports/2026/apr/06/lawrence-boys-tennis-hosts-free-state-others-in-home-quad/",
+    icon: NewspaperIcon,
+  },
+  {
+    title: "Journal-World Athletes of the Week: Lawrence Dao and Sienna Wesley",
+    description:
+      "An athlete-of-the-week feature recognizing Dao after he won six matches across two days as Free State's No. 2 singles player.",
+    href: "https://www2.ljworld.com/sports/2025/apr/10/journal-world-athletes-of-the-week-lawrence-dao-and-sienna-wesley/",
+    icon: StarIcon,
+  },
+  {
+    title: "2025 Journal-World All-Area Boys Tennis Team",
+    description:
+      "The Lawrence Journal-World's 2025 all-area boys tennis selections, featuring Lawrence Dao of Free State.",
+    href: "https://www2.ljworld.com/sports/2025/jun/28/2025-journal-world-all-area-boys-tennis-team/",
+    icon: AwardIcon,
+  },
+  {
+    title: "Kansas high school boys tennis state tournament qualifiers",
+    description:
+      "A statewide list of Kansas boys tennis qualifiers identifying Lawrence Dao of Lawrence Free State as a Class 6A qualifier with a 16-4 record.",
+    href: "https://www.kshsaa.org/Public/Tennis/StateQualifiers-Singles.cfm?ActivityID=19&Year=2025&Gender=1&Class=1&ClassDesc=6A",
+    icon: ListChecksIcon,
+  },
+  {
+    title:
+      "Lawrence boys tennis takes third, Free State fourth following final round of the Sunflower League tournament",
+    description:
+      "A Sunflower League tournament recap reporting that Lawrence Dao won the seventh-place singles match and finished above his original seed.",
+    href: "https://www2.ljworld.com/sports/2025/may/05/lawrence-boys-tennis-takes-third-free-state-fourth-following-final-round-of-the-sunflower-league-tournament/",
+    icon: TrophyIcon,
+  },
+  {
+    title:
+      "Free State, Lawrence boys tennis teams compete in first four rounds of Sunflower League tournament",
+    description:
+      "Coverage of the rain-delayed opening rounds of the league tournament, including Lawrence Dao's 8-5 victory over Asher Sikes.",
+    href: "https://www2.ljworld.com/sports/2025/may/02/free-state-lawrence-boys-tennis-teams-compete-in-first-four-rounds-of-sunflower-league-tournament-before-rain-delay-postpones-final-round-for-monday/",
+    icon: FlowerIcon,
   },
 ];
 
@@ -68,8 +123,9 @@ const services: {
 const reachOutOptions = [
   {
     title: "Email",
-    value: "danieldkdao@gmail.com",
+    value: "lawrencerallypartners@gmail.com",
     icon: MailIcon,
+    href: "mailto:lawrencerallypartners@gmail.com",
   },
   {
     title: "Phone or text",
@@ -84,7 +140,7 @@ export default function Home() {
       <header className="px-6 py-4 border-b w-full flex items-center gap-6">
         <Link href="/">
           <span className="text-2xl font-semibold">
-            Lawrence Tennis Partners
+            Lawrence Rally Partners
           </span>
         </Link>
         <div className="items-center gap-6 hidden sm:flex">
@@ -109,7 +165,7 @@ export default function Home() {
             drills, and competitive match play for players who want to improve
             and have fun.
           </p>
-          <div className="grid grid-cols-2 gap-4 w-full mt-4">
+          <div className="grid grid-cols-2 gap-4 w-full mt-4 max-w-180">
             <Link
               href="#our-services"
               className={cn(
@@ -134,6 +190,15 @@ export default function Home() {
           id="about-us"
           className="flex flex-col items-center w-full gap-16"
         >
+          <div className="h-150 w-full relative">
+            <Image
+              src="/tennisphoto.jpg"
+              alt="Tennis photo"
+              fill
+              className="object-contain rounded-full"
+            />
+          </div>
+
           <h2 className="text-3xl md:text-5xl font-semibold text-center">
             About us
           </h2>
@@ -169,6 +234,28 @@ export default function Home() {
               less time searching for someone to practice with and more time
               improving their game while having fun on the court.
             </p>
+          </div>
+          <div className="w-full flex flex-col gap-8 items-center">
+            <h2 className="text-3xl font-semibold">
+              Our competitive experience:
+            </h2>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+              {articles.map((article) => (
+                <Link key={article.href} target="_blank" href={article.href}>
+                  <Card className="w-full h-full transition-all duration-300 hover:scale-103 hover:border-20">
+                    <CardContent className="flex flex-col items-center gap-2 w-full">
+                      <article.icon className="size-10" />
+                      <h3 className="text-2xl font-semibold text-center">
+                        {article.title}
+                      </h3>
+                      <p className="text-muted-foreground text-lg text-center">
+                        {article.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
         <section
@@ -212,22 +299,32 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 w-full max-w-200">
-            {reachOutOptions.map((option, index) => (
-              <Card
-                key={index}
-                className="transition-all duration-300 hover:scale-103"
-              >
-                <CardContent className="flex flex-col items-center gap-2">
-                  <option.icon className="size-10" />
-                  <h3 className="text-2xl font-semibold text-center">
-                    {option.title}
-                  </h3>
-                  <p className="text-muted-foreground text-center text-xl">
-                    {option.value}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {reachOutOptions.map((option, index) => {
+              const cardComponent = (
+                <Card
+                  key={index}
+                  className="transition-all duration-300 hover:scale-103"
+                >
+                  <CardContent className="flex flex-col items-center gap-2">
+                    <option.icon className="size-10" />
+                    <h3 className="text-2xl font-semibold text-center">
+                      {option.title}
+                    </h3>
+                    <p className="text-muted-foreground text-center text-xl">
+                      {option.value}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+
+              return option.href ? (
+                <Link key={index} href={option.href} className="w-full">
+                  {cardComponent}
+                </Link>
+              ) : (
+                cardComponent
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2 w-full max-w-200">
@@ -251,18 +348,29 @@ export default function Home() {
               All sessions
             </h2>
             <p className="text-2xl text-muted-foreground max-w-250 text-center">
-              A list of all booked sessions so far. Note that this will be moved
-              to a private admin-only dashboard in the future.
+              A list of all booked sessions so far. Note that this is for demo
+              purposes and will be moved to a private admin-only dashboard in
+              the future when this becomes real.
             </p>
           </div>
 
           <SessionsList />
         </section>
       </main>
-      <footer className="mt-32 border-t px-6 py-4 flex items-center justify-center">
+      <footer className="mt-32 border-t px-6 py-4 flex items-center gap-4">
         <span className="text-muted-foreground text-xl font-medium text-center">
-          Lawrence Tennis Partners
+          Lawrence Rally Partners
         </span>
+        <Link
+          href="https://www.instagram.com/lawrencerallypartners"
+          target="_blank"
+          className={cn(
+            buttonVariants({ variant: "secondary", size: "icon" }),
+            "size-14",
+          )}
+        >
+          <FaInstagram className="size-10 text-foreground/60" />
+        </Link>
       </footer>
     </div>
   );

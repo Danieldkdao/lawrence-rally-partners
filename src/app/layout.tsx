@@ -15,8 +15,8 @@ const outfitSans = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Lawrence Tennis Partners",
-  description: "Lawrence Tennis Partners",
+  title: "Lawrence Rally Partners",
+  description: "Lawrence Rally Partners",
 };
 
 export default function RootLayout({

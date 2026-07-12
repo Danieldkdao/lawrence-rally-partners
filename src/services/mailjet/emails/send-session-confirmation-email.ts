@@ -49,7 +49,7 @@ export function createSessionEmail(
     return [
       `Thank you, ${name}!`,
       "",
-      "Lawrence Tennis Partners",
+      "Lawrence Rally Partners",
       "",
       "We received your session request and will contact you soon to confirm the details.",
       "",
@@ -61,14 +61,14 @@ export function createSessionEmail(
       "",
       "We look forward to working with you!",
       "",
-      "Lawrence Tennis Partners",
+      "Lawrence Rally Partners",
     ].join("\n");
   }
 
   if (recipient === "internal" && type === "text") {
     return [
       "",
-      "Lawrence Tennis Partners",
+      "Lawrence Rally Partners",
       "",
       "A new session request has been submitted.",
       "",
@@ -107,7 +107,7 @@ export function createSessionEmail(
 <html lang="en">
   <body style="margin: 0; padding: 24px; font-family: Arial, sans-serif; color: #111; line-height: 1.5;">
     <p><strong>Thank you, ${safe.name}!</strong></p>
-    <p><strong>Lawrence Tennis Partners</strong></p>
+    <p><strong>Lawrence Rally Partners</strong></p>
 
     <p>
       We received your session request and will contact you soon to
@@ -121,7 +121,7 @@ export function createSessionEmail(
     <p><strong>Location:</strong> ${safe.location}</p>
 
     <p>We look forward to working with you!</p>
-    <p>Lawrence Tennis Partners</p>
+    <p>Lawrence Rally Partners</p>
   </body>
 </html>`;
   }
@@ -133,7 +133,7 @@ export function createSessionEmail(
   return `<!doctype html>
 <html lang="en">
   <body style="margin: 0; padding: 24px; font-family: Arial, sans-serif; color: #111; line-height: 1.5;">
-    <p><strong>Lawrence Tennis Partners</strong></p>
+    <p><strong>Lawrence Rally Partners</strong></p>
 
     <p>A new session request has been submitted.</p>
 

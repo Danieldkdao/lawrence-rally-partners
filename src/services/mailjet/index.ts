@@ -1,7 +1,7 @@
 import { envServer } from "@/data/env/server";
 import Mailjet from "node-mailjet";
 
-const DEFAULT_FROM_NAME = "Lawrence Tennis Partners";
+const DEFAULT_FROM_NAME = "Lawrence Rally Partners";
 
 const mailjet = Mailjet.apiConnect(
   envServer.MAILJET_API_KEY,
