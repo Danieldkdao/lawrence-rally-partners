@@ -1,5 +1,5 @@
 import { pgEnum, pgTable, text } from "drizzle-orm/pg-core";
-import { id } from "../helpers";
+import { createdAt, id, updatedAt } from "../helpers";
 
 export const ageGroups = ["under-12", "12-14", "15-18", "adult"] as const;
 export type AgeGroup = (typeof ageGroups)[number];
@@ -31,4 +31,6 @@ export const SessionTable = pgTable("sessions", {
   availability: text("availability").notNull(),
   location: text("location").notNull(),
   additionalNotes: text("additional_notes"),
+  createdAt,
+  updatedAt,
 });
