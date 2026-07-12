@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Outfit, Fraunces } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const frauncesHeading = Fraunces({
+  variable: "--font-heading",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfitSans = Outfit({
+  variable: "--font-outfit-sans",
   subsets: ["latin"],
 });
 
@@ -32,10 +30,10 @@ export default function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        geistSans.variable,
-        geistMono.variable,
+        outfitSans.variable,
+        outfitSans.className,
         "font-sans",
-        inter.variable,
+        frauncesHeading.variable,
       )}
     >
       <body className="min-h-full flex flex-col">
