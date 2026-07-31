@@ -17,6 +17,10 @@ const links = [
     label: "Sessions",
     href: "/sessions",
   },
+  {
+    label: "Media",
+    href: "/media",
+  },
 ];
 
 export const Header = () => {
