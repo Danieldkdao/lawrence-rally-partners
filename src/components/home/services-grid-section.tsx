@@ -61,6 +61,9 @@ export const ServicesGridSection = () => {
           trigger: scrollRef.current,
           start: "top 80%",
         },
+        onComplete: () => {
+          headingSplit.revert();
+        },
       });
 
       timeline
@@ -88,7 +91,7 @@ export const ServicesGridSection = () => {
 
   return (
     <section
-      className="flex flex-col items-center w-full gap-16"
+      className="flex flex-col items-center w-full gap-8 md:gap-16"
       ref={scrollRef}
     >
       <h2 className="services-heading text-3xl md:text-5xl font-semibold text-center">

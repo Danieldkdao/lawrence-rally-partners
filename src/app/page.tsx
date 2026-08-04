@@ -9,11 +9,11 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 -z-20 bg-[url('/tennis-bg.jpg')] bg-cover bg-center bg-no-repeat" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-linear-to-b from-transparent via-background to-background" />
       <main className="min-h-screen">
-        <div className="w-full h-screen flex items-center justify-center bg-linear-to-b from-transparent via-transparent to-background">
+        <div className="w-full h-screen flex items-center justify-center bg-linear-to-b from-transparent via-transparent to-background p-5">
           <HeroSection />
         </div>
-        <div className="w-full bg-background">
-          <div className="mx-auto max-w-7xl flex flex-col items-center px-10 w-full bg-background gap-52">
+        <div className="w-full bg-background p-5">
+          <div className="mx-auto max-w-7xl flex flex-col items-center w-full bg-background gap-52">
             <ServicesGridSection />
             <AboutUsSection />
             <CTASection />

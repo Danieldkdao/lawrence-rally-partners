@@ -15,13 +15,6 @@ export const CTASection = () => {
 
   useGSAP(
     () => {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollRef.current,
-          start: "top 80%",
-        },
-      });
-
       const headingSplit = new SplitText(".cta-heading", {
         type: "chars, words",
       });
@@ -30,6 +23,19 @@ export const CTASection = () => {
       });
       const phoneSplit = new SplitText(".phone-text", { type: "chars, words" });
       const emailSplit = new SplitText(".email-text", { type: "chars, words" });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: scrollRef.current,
+          start: "top 80%",
+        },
+        onComplete: () => {
+          headingSplit.revert();
+          descriptionSplit.revert();
+          phoneSplit.revert();
+          emailSplit.revert();
+        },
+      });
 
       timeline
         .from(headingSplit.chars, {
@@ -89,25 +95,34 @@ export const CTASection = () => {
 
   return (
     <section
-      className="flex flex-col items-center w-full gap-16"
+      className="flex flex-col items-center w-full gap-8 md:gap-16"
       ref={scrollRef}
     >
       <h2 className="cta-heading text-3xl md:text-5xl font-semibold text-center">
         Ready to level up?
       </h2>
       <div className="w-full flex flex-col items-center gap-8">
-        <p className="cta-description text text-2xl text-muted-foreground text-center max-w-250">
+        <p className="cta-description text-xl md:text-2xl text-muted-foreground text-center max-w-250">
           Contact us to get started and upgrade your game today. We serve the
           Lawrence area.
         </p>
         <div className="w-full flex flex-col items-center gap-4">
-          <span className="phone-text text-2xl text-foreground font-medium">
-            <span className="font-normal text-muted-foreground">Phone: </span>
-            (785) 393-7817
-          </span>
-          <Link href="mailto:lawrencerallypartners@gmail.com">
-            <span className="email-text text-2xl text-foreground font-medium">
-              <span className="font-normal text-muted-foreground">Email: </span>
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <span className="text-muted-foreground text-xl md:text-2xl">
+              Phone:{" "}
+            </span>
+            <span className="phone-text text-xl md:text-2xl text-foreground font-medium">
+              (785) 393-7817
+            </span>
+          </div>
+          <Link
+            href="mailto:lawrencerallypartners@gmail.com"
+            className="flex flex-col sm:flex-row items-center gap-2"
+          >
+            <span className="text-muted-foreground text-xl md:text-2xl">
+              Email:{" "}
+            </span>
+            <span className="email-text text-xl md:text-2xl text-foreground font-medium">
               lawrencerallypartners@gmail.com
             </span>
           </Link>

@@ -77,6 +77,9 @@ const MediaPage = () => {
       duration: 1.8,
       ease: "expo.out",
       stagger: 0.06,
+      onComplete: () => {
+        headingSplit.revert();
+      },
     });
     gsap.from(descriptionSplit.lines, {
       opacity: 0,
@@ -85,8 +88,10 @@ const MediaPage = () => {
       ease: "expo.out",
       stagger: 0.06,
       delay: 0.5,
+      onComplete: () => {
+        descriptionSplit.revert();
+      },
     });
-
     gsap.from(cards, {
       opacity: 0,
       yPercent: 100,
@@ -98,13 +103,14 @@ const MediaPage = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center w-full gap-16 max-w-400 mt-52 mx-auto">
+    <section className="flex flex-col items-center w-full gap-8 md:gap-16 max-w-400 mt-32 md:mt-52 mx-auto p-5">
       <div className="flex flex-col gap-4 items-center w-full">
         <h2 className="media-heading text-3xl md:text-5xl font-semibold text-center">
           Media
         </h2>
-        <p className="media-description text-2xl text-muted-foreground max-w-250 text-center">
-          Coverage for Lawrence Rally Partners
+        <p className="media-description text-xl md:text-2xl text-muted-foreground max-w-250 text-center">
+          Coverage for Lawrence Rally Partners. Here you can find our best
+          highlights, updates, and some cool tips and tricks.
         </p>
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">

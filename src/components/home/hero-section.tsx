@@ -9,14 +9,21 @@ import { buttonVariants } from "../ui/button";
 
 export const HeroSection = () => {
   useGSAP(() => {
-    const heroTitleSplit = new SplitText(".title", { type: "words" });
+    const heroTitleSplit = new SplitText(".title", {
+      type: "words",
+      autoSplit: true,
+    });
     const subtitleSplit = new SplitText(".subtitle", { type: "lines" });
 
     gsap.from(heroTitleSplit.words, {
+      opacity: 0,
       yPercent: 100,
       duration: 1.8,
       ease: "expo.out",
       stagger: 0.06,
+      onComplete: () => {
+        heroTitleSplit.revert();
+      },
     });
 
     gsap.from(subtitleSplit.lines, {
@@ -26,6 +33,9 @@ export const HeroSection = () => {
       ease: "expo.out",
       stagger: 0.06,
       delay: 1,
+      onComplete: () => {
+        subtitleSplit.revert();
+      },
     });
 
     gsap.from(".cta-buttons", {
@@ -43,12 +53,12 @@ export const HeroSection = () => {
       <h1 className="title text-4xl md:text-6xl font-semibold text-center max-w-250 leading-[1.2em]">
         Find your best game through better practice.
       </h1>
-      <p className="subtitle text-muted-foreground text-2xl md:text-3xl text-center max-w-250 leading-relaxed">
+      <p className="subtitle text-muted-foreground text-xl md:text-3xl w-full max-w-250 text-center leading-relaxed">
         Tennis and pickleball partners offering quality rallies, purposeful
         drills, and competitive match play for players who want to improve and
         have fun.
       </p>
-      <div className="cta-buttons grid grid-cols-2 gap-4 w-full mt-4 max-w-180">
+      <div className="cta-buttons grid-cols-1 grid md:grid-cols-2 gap-4 w-full mt-4 max-w-180">
         <Link
           href="/"
           className={cn(

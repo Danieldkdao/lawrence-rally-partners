@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { Outfit, Fraunces } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
-import Link from "next/link";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { Fraunces, Outfit } from "next/font/google";
+import "./globals.css";
 
 const frauncesHeading = Fraunces({
   variable: "--font-heading",

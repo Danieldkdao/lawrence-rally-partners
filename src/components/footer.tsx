@@ -12,7 +12,7 @@ export const Footer = () => {
           target="_blank"
           className={cn(
             buttonVariants({ variant: "secondary", size: "icon" }),
-            "size-14",
+            "size-10 max-md:[&_svg]:size-6 md:size-14",
           )}
         >
           <FaInstagram className="size-10 text-foreground/60" />

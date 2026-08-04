@@ -15,18 +15,22 @@ export const AboutUsSection = () => {
 
   useGSAP(
     () => {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollRef.current,
-          start: "top 80%",
-        },
-      });
-
       const headingSplit = new SplitText(".about-us-heading", {
         type: "chars, words",
       });
       const descriptionSplit = new SplitText(".about-us-description", {
         type: "lines",
+      });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: scrollRef.current,
+          start: "top 80%",
+        },
+        onComplete: () => {
+          headingSplit.revert();
+          descriptionSplit.revert();
+        },
       });
 
       timeline
@@ -65,14 +69,14 @@ export const AboutUsSection = () => {
 
   return (
     <section
-      className="flex flex-col items-center w-full gap-16"
+      className="flex flex-col items-center w-full gap-8 md:gap-16"
       ref={scrollRef}
     >
       <h2 className="about-us-heading text-3xl md:text-5xl font-semibold text-center">
         About us
       </h2>
       <div className="w-full flex flex-col items-center gap-8">
-        <p className="about-us-description text text-2xl text-muted-foreground text-center max-w-250">
+        <p className="about-us-description text-xl md:text-2xl text-muted-foreground text-center max-w-250">
           Lawrence Rally Partners was founded by Lawrence and Daniel Dao, two
           brothers from Lawrence, Kansas, who are passionate about tennis,
           pickleball, and helping others improve through consistent, purposeful
