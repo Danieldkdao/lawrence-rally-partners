@@ -29,7 +29,7 @@ export const Header = () => {
           <div className="relative size-10">
             <Image src="/logo.png" alt="Logo" fill className="object-contain" />
           </div>
-          <span className="text-2xl font-semibold hidden md:block">
+          <span className="text-lg md:text-2xl font-semibold">
             Lawrence Rally Partners
           </span>
         </Link>
