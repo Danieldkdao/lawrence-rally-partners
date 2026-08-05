@@ -60,7 +60,7 @@ export const HeroSection = () => {
       </p>
       <div className="cta-buttons grid-cols-1 grid md:grid-cols-2 gap-4 w-full mt-4 max-w-180">
         <Link
-          href="/"
+          href="/services"
           className={cn(
             buttonVariants({ variant: "secondary" }),
             "h-12 text-xl",
