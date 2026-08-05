@@ -84,7 +84,7 @@ export const AboutUsSection = () => {
         </p>
         <div className="w-full max-w-75 read-more-button">
           <Link
-            href="/about-us"
+            href="/about"
             className={buttonVariants({
               variant: "secondary",
               className: "h-12 text-xl w-full",

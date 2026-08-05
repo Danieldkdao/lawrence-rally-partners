@@ -15,16 +15,16 @@ import { NavLink } from "@/lib/types";
 
 const links: NavLink[] = [
   {
-    label: "About us",
-    href: "/about-us",
+    label: "About",
+    href: "/about",
   },
   {
-    label: "Our services",
+    label: "Services",
     href: "/services",
   },
   {
-    label: "Contact us",
-    href: "/contact-us",
+    label: "Contact",
+    href: "/contact",
   },
   {
     label: "Media",

@@ -10,7 +10,12 @@ import {
 import { cn } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
-import { CheckCircle2Icon, ChevronDownIcon, TargetIcon } from "lucide-react";
+import {
+  CheckCircle2Icon,
+  CheckIcon,
+  ChevronDownIcon,
+  TargetIcon,
+} from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
 
@@ -217,7 +222,7 @@ const ServicesPage = () => {
                             key={item}
                             className="flex items-start gap-2 text-base md:text-lg text-muted-foreground"
                           >
-                            <CheckCircle2Icon className="mt-0.5 size-5 shrink-0 text-primary/70" />
+                            <CheckIcon className="mt-0.5 size-5 shrink-0 text-primary/70" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -243,7 +248,7 @@ const ServicesPage = () => {
         </div>
 
         <Link
-          href="/contact-us"
+          href="/contact"
           className={cn(
             buttonVariants({
               size: "lg",

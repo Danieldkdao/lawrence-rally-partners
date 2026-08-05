@@ -6,7 +6,7 @@ import { ServicesGridSection } from "@/components/home/services-grid-section";
 export default function Home() {
   return (
     <>
-      <div className="pointer-events-none fixed inset-0 -z-20 bg-[url('/tennis-bg.jpg')] bg-cover bg-center bg-no-repeat" />
+      <div className="pointer-events-none fixed inset-0 -z-20 bg-[url('/tennis-bg.jpg')] bg-[center_top_30px] bg-cover bg-no-repeat" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-linear-to-b from-transparent via-background to-background" />
       <main className="min-h-screen">
         <div className="w-full h-screen flex items-center justify-center bg-linear-to-b from-transparent via-transparent to-background p-5">

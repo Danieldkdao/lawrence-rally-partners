@@ -129,7 +129,7 @@ export const CTASection = () => {
         </div>
         <div className="w-full max-w-75 contact-us-button">
           <Link
-            href="/contact-us"
+            href="/contact"
             className={buttonVariants({
               variant: "secondary",
               className: "h-12 text-xl w-full",
