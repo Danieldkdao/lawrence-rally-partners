@@ -49,9 +49,9 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="w-full flex flex-col gap-6 items-center">
+    <section className="w-full flex flex-col gap-6 items-center mt-44">
       <h1 className="title text-4xl md:text-6xl font-semibold text-center max-w-350 leading-[1.2em]">
-        Find your best game through better practice.
+        Find your best game through better practice
       </h1>
       <p className="subtitle text-muted-foreground text-xl md:text-3xl w-full max-w-250 text-center leading-relaxed">
         Tennis and pickleball partners offering quality rallies, purposeful
