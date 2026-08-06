@@ -37,7 +37,7 @@ If you would rather run this locally, I have instructions below.
 - Neon for DB and Drizzle as the ORM
 - Mailjet for sending emails
 - Tailwind CSS for styling and Shadcn UI for easy-to-edit and reusable components
-- GSAP for smooth, animations and scroll triggers
+- GSAP for smooth animations and scroll triggers
 - React Hook Form handles easy form input field management and Zod handles form validation and input validation
 - PNPM as the package manager
 
