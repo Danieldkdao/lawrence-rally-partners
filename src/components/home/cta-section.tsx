@@ -21,7 +21,7 @@ export const CTASection = () => {
       const descriptionSplit = new SplitText(".cta-description", {
         type: "lines",
       });
-      const phoneSplit = new SplitText(".phone-text", { type: "chars, words" });
+
       const emailSplit = new SplitText(".email-text", { type: "chars, words" });
 
       const timeline = gsap.timeline({
@@ -32,7 +32,6 @@ export const CTASection = () => {
         onComplete: () => {
           headingSplit.revert();
           descriptionSplit.revert();
-          phoneSplit.revert();
           emailSplit.revert();
         },
       });
@@ -55,17 +54,6 @@ export const CTASection = () => {
             stagger: 0.06,
           },
           0.5,
-        )
-        .from(
-          phoneSplit.chars,
-          {
-            opacity: 0,
-            yPercent: 100,
-            duration: 1.8,
-            ease: "expo.out",
-            stagger: 0.06,
-          },
-          "<",
         )
         .from(
           emailSplit.chars,
@@ -107,14 +95,6 @@ export const CTASection = () => {
           Lawrence area.
         </p>
         <div className="w-full flex flex-col items-center gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2">
-            <span className="text-muted-foreground text-xl md:text-2xl">
-              Phone:{" "}
-            </span>
-            <span className="phone-text text-xl md:text-2xl text-foreground font-medium">
-              (785) 393-7817
-            </span>
-          </div>
           <Link
             href="mailto:lawrencerallypartners@gmail.com"
             className="flex flex-col sm:flex-row items-center gap-2"

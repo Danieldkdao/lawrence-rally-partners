@@ -51,14 +51,6 @@ const ContactUsPage = () => {
             about our services.
           </p>
           <div className="w-full flex flex-col items-center gap-4">
-            <div className="flex flex-col sm:flex-row items-center gap-2">
-              <span className="text-muted-foreground text-xl md:text-2xl">
-                Phone:{" "}
-              </span>
-              <span className="phone-text text-xl md:text-2xl text-foreground font-medium">
-                (785) 393-7817
-              </span>
-            </div>
             <Link
               href="mailto:lawrencerallypartners@gmail.com"
               className="flex flex-col sm:flex-row items-center gap-2"
