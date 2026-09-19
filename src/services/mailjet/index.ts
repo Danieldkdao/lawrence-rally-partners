@@ -51,6 +51,8 @@ export const sendEmail = async ({
     const errorMessage = Error.isError(error)
       ? error.message
       : "Unknown mailjet error.";
-    console.error("Mailjet send failed: ", errorMessage);
+    const fullErrorMessage = `Mailjet send failed: ${errorMessage}`;
+    console.error(fullErrorMessage);
+    throw new Error(fullErrorMessage);
   }
 };

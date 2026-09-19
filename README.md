@@ -111,6 +111,18 @@ Because the project uses @t3-oss/env-nextjs for environment variables, it will t
 # Neon
 DATABASE_URL=
 
+# Better Auth
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+
+# Google
+GOOGLE_CLIENT_SECRET=
+GOOGLE_CLIENT_ID=
+
+# Github
+GITHUB_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+
 # App
 APP_URL=
 
