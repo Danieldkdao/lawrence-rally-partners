@@ -39,11 +39,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen dark">
-        <div className="relative isolate min-h-screen w-full">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <div className="relative isolate min-h-screen w-full">{children}</div>
         <Toaster />
       </body>
     </html>
