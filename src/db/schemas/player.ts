@@ -1,8 +1,8 @@
 import { pgTable, text, uuid } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "../helpers";
 import { user } from "./user";
-import { ageGroupEnum } from "./session";
 import { relations } from "drizzle-orm";
+import { playerAgeGroupEnum } from "../shared";
 
 export const PlayerTable = pgTable("players", {
   id,
@@ -10,7 +10,7 @@ export const PlayerTable = pgTable("players", {
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
   name: text("name").notNull(),
-  ageGroup: ageGroupEnum("age_group").notNull(),
+  ageGroup: playerAgeGroupEnum("age_group").notNull(),
   goals: text("goals"),
   coachingNotes: text("coaching_notes"),
   createdAt,

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const frauncesHeading = Fraunces({
   variable: "--font-heading",
@@ -37,8 +38,10 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen dark">
-        <div className="relative isolate min-h-screen w-full">{children}</div>
-        <Toaster />
+        <NuqsAdapter>
+          <div className="relative isolate min-h-screen w-full">{children}</div>
+          <Toaster />
+        </NuqsAdapter>
       </body>
     </html>
   );
