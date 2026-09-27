@@ -41,21 +41,30 @@ export const useInfiniteCursor = <T>(
         loadingRef.current = true;
 
         startTransition(async () => {
-          setError(null);
+          try {
+            setError(null);
 
-          const response = await fetchAction(nextCursor);
-          if (!response) {
+            const response = await fetchAction(nextCursor);
+            if (!response) {
+              setError(
+                customErrorMessage ||
+                  "Failed to load more items. Please try again.",
+              );
+              return;
+            }
+
+            const { nextCursor: resNextCursor, data } = response;
+
+            setItems((prev) => [...prev, ...data]);
+            setNextCursor(resNextCursor);
+          } catch {
             setError(
               customErrorMessage ||
                 "Failed to load more items. Please try again.",
             );
-            return;
+          } finally {
+            loadingRef.current = false;
           }
-
-          const { nextCursor: resNextCursor, data } = response;
-
-          setItems((prev) => [...prev, ...data]);
-          setNextCursor(resNextCursor);
         });
       },
       {

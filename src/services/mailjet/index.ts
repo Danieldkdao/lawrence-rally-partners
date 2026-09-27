@@ -1,4 +1,5 @@
 import { envServer } from "@/data/env/server";
+import { getErrorMessage } from "@/lib/utils";
 import Mailjet from "node-mailjet";
 
 const DEFAULT_FROM_NAME = "Lawrence Rally Partners";
@@ -48,10 +49,7 @@ export const sendEmail = async ({
 
     return response.body;
   } catch (error) {
-    const errorMessage = Error.isError(error)
-      ? error.message
-      : "Unknown mailjet error.";
-    const fullErrorMessage = `Mailjet send failed: ${errorMessage}`;
+    const fullErrorMessage = `Mailjet send failed: ${getErrorMessage(error)}`;
     console.error(fullErrorMessage);
     throw new Error(fullErrorMessage);
   }

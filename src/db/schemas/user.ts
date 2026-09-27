@@ -8,6 +8,7 @@ import {
   index,
 } from "drizzle-orm/pg-core";
 import { PlayerTable } from "./player";
+import { CoachingSessionTable } from "./coaching-session";
 
 export const user = pgTable("user", {
   id: uuid("id")
@@ -93,6 +94,7 @@ export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
   players: many(PlayerTable),
+  coachingSessions: many(CoachingSessionTable),
 }));
 
 export const sessionRelations = relations(session, ({ one }) => ({

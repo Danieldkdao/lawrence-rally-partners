@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { SessionForm } from "@/features/sessions/components/session-form";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
@@ -64,11 +63,6 @@ const ContactUsPage = () => {
             </Link>
           </div>
         </div>
-        <Card>
-          <CardContent>
-            <SessionForm />
-          </CardContent>
-        </Card>
       </div>
     </main>
   );

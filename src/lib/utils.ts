@@ -31,7 +31,7 @@ export const optionalifyZodSchema = <T extends z.ZodObject>(
 };
 
 export const getErrorMessage = (error: unknown) =>
-  Error.isError(error) ? error.message : GENERAL_ERROR_MESSAGE;
+  error instanceof Error ? error.message : GENERAL_ERROR_MESSAGE;
 
 export const createPaginationCursorSchema = <T extends z.ZodObject>(
   schema: T,
