@@ -37,7 +37,7 @@ export const DashboardSidebarContent = () => {
     <SidebarContent>
       <SidebarGroup>
         <SidebarGroupContent>
-          <SidebarMenu>
+          <SidebarMenu className="flex flex-col gap-1">
             {navigation.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton
@@ -45,8 +45,8 @@ export const DashboardSidebarContent = () => {
                   render={<Link href={item.url} />}
                   isActive={pathname === item.url}
                 >
-                  <item.icon />
-                  <span>{item.title}</span>
+                  <item.icon className="size-5!" />
+                  <span className="text-lg font-medium">{item.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
