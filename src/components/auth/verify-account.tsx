@@ -2,7 +2,7 @@
 
 import { authClient } from "@/lib/auth/auth-client";
 import { GENERAL_ERROR_MESSAGE } from "@/lib/constants";
-import { SetterType } from "@/lib/types";
+import { Setter } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -23,7 +23,7 @@ type FormType = z.infer<typeof formSchema>;
 
 type VerifyAccountProps = {
   email: string;
-  setEmail: SetterType<string | null>;
+  setEmail: Setter<string | null>;
 };
 
 export const VerifyAccount = ({ email, setEmail }: VerifyAccountProps) => {

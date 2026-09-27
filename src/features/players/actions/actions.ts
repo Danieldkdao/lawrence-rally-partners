@@ -64,7 +64,7 @@ const readCachedPlayersAction = async (
     : undefined;
 
   const { success, data } = playersPaginationCursorSchema.safeParse(lastCursor);
-  if (!success || !data.timestamp) return null;
+  if (lastCursor && (!success || !data.timestamp)) return null;
 
   const sortByMap: Record<
     PlayersSortByOption,
@@ -76,35 +76,41 @@ const readCachedPlayersAction = async (
   > = {
     recently_created: {
       sortBy: [desc(PlayerTable.createdAt), desc(PlayerTable.id)],
-      cursorFilter: or(
-        gt(PlayerTable.createdAt, data.timestamp),
-        and(
-          eq(PlayerTable.createdAt, data.timestamp),
-          gt(PlayerTable.id, data.playerId),
-        ),
-      ),
+      cursorFilter: data
+        ? or(
+            lt(PlayerTable.createdAt, data.timestamp),
+            and(
+              eq(PlayerTable.createdAt, data.timestamp),
+              lt(PlayerTable.id, data.playerId),
+            ),
+          )
+        : undefined,
       nextCursorField: "createdAt",
     },
     oldest: {
       sortBy: [asc(PlayerTable.createdAt), asc(PlayerTable.id)],
-      cursorFilter: or(
-        lt(PlayerTable.createdAt, data.timestamp),
-        and(
-          eq(PlayerTable.createdAt, data.timestamp),
-          lt(PlayerTable.id, data.playerId),
-        ),
-      ),
+      cursorFilter: data
+        ? or(
+            gt(PlayerTable.createdAt, data.timestamp),
+            and(
+              eq(PlayerTable.createdAt, data.timestamp),
+              gt(PlayerTable.id, data.playerId),
+            ),
+          )
+        : undefined,
       nextCursorField: "createdAt",
     },
     recently_updated: {
       sortBy: [desc(PlayerTable.updatedAt), desc(PlayerTable.id)],
-      cursorFilter: or(
-        gt(PlayerTable.updatedAt, data.timestamp),
-        and(
-          eq(PlayerTable.updatedAt, data.timestamp),
-          gt(PlayerTable.id, data.playerId),
-        ),
-      ),
+      cursorFilter: data
+        ? or(
+            lt(PlayerTable.updatedAt, data.timestamp),
+            and(
+              eq(PlayerTable.updatedAt, data.timestamp),
+              lt(PlayerTable.id, data.playerId),
+            ),
+          )
+        : undefined,
       nextCursorField: "updatedAt",
     },
   };
@@ -134,9 +140,22 @@ const readCachedPlayersAction = async (
       })
     : null;
 
+  const playersKey = JSON.stringify({
+    players: players.map((player) => ({
+      id: player.id,
+      updated: player.updatedAt.toISOString(),
+    })),
+    filters: {
+      search: options.search,
+      sortBy: options.sortBy,
+      ageGroups: options.ageGroups,
+    },
+  });
+
   return {
-    players: players.slice(0, PAGE_SIZE),
+    data: players.slice(0, PAGE_SIZE),
     nextCursor,
+    key: playersKey,
   };
 };
 export const readPlayersAction = async (options: ReadPlayersOptionsSchema) => {
@@ -210,7 +229,7 @@ export const updatePlayerAction = async (
 
   const { success, data } = updatePlayerSchema.safeParse({
     ...existingPlayer,
-    unsafeData,
+    ...unsafeData,
   });
   if (!success) {
     return {
@@ -224,7 +243,7 @@ export const updatePlayerAction = async (
     if (!updatedPlayer) throw new Error("Failed to update player.");
 
     return {
-      error: true as const,
+      error: false as const,
       message: "Player updated successfully!",
       playerId: updatedPlayer.id,
     };

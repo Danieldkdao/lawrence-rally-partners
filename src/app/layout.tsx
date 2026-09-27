@@ -37,9 +37,9 @@ export default function RootLayout({
         frauncesHeading.variable,
       )}
     >
-      <body className="min-h-screen dark">
+      <body className="dark">
         <NuqsAdapter>
-          <div className="relative isolate min-h-screen w-full">{children}</div>
+          {children}
           <Toaster />
         </NuqsAdapter>
       </body>
